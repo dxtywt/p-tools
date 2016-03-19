@@ -1,0 +1,45 @@
+config:
+    crontab_time: 300
+machines:
+    openstack-node1: [openstack, open]
+    openstack-node2: [openstack, open]
+modules:
+    pdc_lighttpd:
+        rd: []
+        user: work
+        port:
+        logs:
+          - path: /data/work/logs/access_log
+            index_path: /data/work/logs/access_log.index
+            index_time: 3600
+            keep_days: 7
+          - path: /data/work/logs/error_log
+            index_path: /data/work/logs/error_log.index
+            index_time: 3600
+            keep_days: 7
+cdn:
+  - domain: www.test.com
+    cdn_domain: wap.shift.test.com
+    ip:
+        ct_vip: '4.4.4.4'
+  - domain: c.test.com
+    cdn_domain: c.shift.test.com
+    ip:
+        ct_vip: '2.2.2.2'
+        cm_vip: '3.3.3.3'
+  - domain: b.test.com
+    cdn_domain: 
+        vip: '113.105.248.240'
+  - domain: a.test.com
+    cdn_domain: 
+        vip: '1.1.1.1'
+idc:
+    ct: [c01, b01]
+    cm: [a01, d01]
+    all: [c01, b01, a01, d01]
+staff:
+    op:
+        lushan:
+            name: 'wt'
+            email: wt@qq.com
+            mobile: '123456'
